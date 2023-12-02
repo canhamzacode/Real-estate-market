@@ -1,7 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 body {
-  background: black;
-  color: whitesmoke;
+  background: whitesmoke;
+  color: black;
+  font-family: "Roboto", sans-serif;
+}
+
+.bg-radial {
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(51, 179, 123, 0.4) 97%
+  );
 }

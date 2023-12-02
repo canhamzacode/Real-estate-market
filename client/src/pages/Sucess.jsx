@@ -29,6 +29,7 @@ const Sucess = () => {
       await supabase.auth.getUser().then((value) => {
         if (value?.data?.user) {
           setUser(value.data.user);
+          console.log(user);
         }
       });
     };
