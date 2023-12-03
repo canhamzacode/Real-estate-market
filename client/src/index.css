@@ -16,3 +16,6 @@ body {
     rgba(51, 179, 123, 0.4) 97%
   );
 }
+.supabase-auth-ui_ui-button {
+  background: black !important;
+}
