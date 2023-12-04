@@ -3,9 +3,15 @@ import { CgProfile } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
 import { FaBars } from "react-icons/fa6";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthContext";
+import SplitMail from "../utils/SplitMail";
 
 const NavBar = () => {
-  const [user, setUser] = useState(true);
+  const { user } = useContext(AuthContext);
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
   const [navState, setNavState] = useState(false);
   const [disableScroll, setDisableScroll] = useState(false);
 
@@ -39,7 +45,9 @@ const NavBar = () => {
       </div>
 
       <div className="flex items-center justify-center gap-6">
-        <p className="text-sm font-bold hidden md:flex">Hamzat Abdul-muizz</p>
+        <p className="text-sm font-bold hidden capitalize md:flex">
+          {user && user.email && SplitMail(user.email)}
+        </p>
 
         <Link to={user ? "/profile" : "/login"}>
           <button

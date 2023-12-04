@@ -1,6 +1,16 @@
+import { useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      navigate(`/search/${searchQuery}`);
+    }
+  };
   return (
     <div className="w-full h-[600px] bg-red-600 relative">
       <img
@@ -21,20 +31,29 @@ const Header = () => {
                 type="text"
                 placeholder="Search..."
                 className="w-full border-none outline-none bg-transparent text-black"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onKeyPress={handleKeyPress}
               />
             </div>
             <div className="w-full flex items-center justify-center gap-4  mt-2">
               <h3>Trending:</h3>
               <div className="flex gap-2">
-                <button className="bg-black text-white font-bold p-2 rounded-sm">
-                  Avatar
-                </button>
-                <button className="bg-black text-white font-bold p-2 rounded-sm">
-                  Avatar
-                </button>
-                <button className="bg-black text-white font-bold p-2 rounded-sm">
-                  Avatar
-                </button>
+                <Link to="/search/avatar">
+                  <button className="bg-black text-white font-bold p-2 rounded-sm">
+                    Avatar
+                  </button>
+                </Link>
+                <Link to="/search/avatar">
+                  <button className="bg-black text-white font-bold p-2 rounded-sm">
+                    Avatar
+                  </button>
+                </Link>
+                <Link to="/search/avatar">
+                  <button className="bg-black text-white font-bold p-2 rounded-sm">
+                    Avatar
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

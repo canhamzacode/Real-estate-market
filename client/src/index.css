@@ -19,3 +19,7 @@ body {
 .supabase-auth-ui_ui-button {
   background: black !important;
 }
+
+body.modal-open {
+  overflow-y: hidden;
+}

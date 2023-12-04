@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const PropertyCard = () => {
   return (
     <div className="p-[10px] bg-[#ebfff7] shadow-xl  grid gap-2 ">
@@ -9,7 +11,9 @@ const PropertyCard = () => {
         />
       </figure>
       <figcaption>
-        <h3 className="text-xl font-bold">Hamzat Luxry</h3>
+        <Link to="/property/id">
+          <h3 className="text-xl font-bold">Hamzat Luxry</h3>
+        </Link>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium
           consequuntur sunt explicabo exercitationem eveniet quaerat, ipsa a

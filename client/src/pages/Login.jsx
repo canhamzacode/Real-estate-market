@@ -16,7 +16,7 @@ const Login = () => {
       try {
         if (event === "SIGNED_IN") {
           setIsLoggedIn(true);
-          navigate("/");
+          navigate("/feed");
         } else if (event === "SIGNED_OUT") {
           setIsLoggedIn(false);
         }
