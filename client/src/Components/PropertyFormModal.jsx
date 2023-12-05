@@ -1,10 +1,15 @@
-import { useState } from "react";
-import Step1 from "./Step1";
+import { useEffect, useState } from "react";
+import GeneralInfo from "./GeneralInfo";
+import MyMap from "./MyMap";
 
 // eslint-disable-next-line react/prop-types
 const PropertyFormModal = ({ onClose }) => {
+  const [step, setStep] = useState(2);
   const [formData, setFormData] = useState({
-    address: "",
+    address: {
+      long: "",
+      lat: "",
+    },
     type: "",
     price: "",
     size: "",
@@ -13,15 +18,39 @@ const PropertyFormModal = ({ onClose }) => {
     description: "",
     contact: "",
     location: "",
-    recordings: "",
-    pictures: "",
+    recordings: [],
+    pictures: [],
   });
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
+  const handleNext = () => {
+    setStep((prevStep) => prevStep + 1);
+  };
+
+  const handlePrev = () => {
+    setStep((prevStep) => prevStep - 1);
+  };
+
+  const handleFormChange = (field, value) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [field]: value,
+    }));
+  };
 
   return (
     <div className="modal">
-      <div className="modal-content">
-        <Step1 />
-      </div>
+      {step === 1 && (
+        <GeneralInfo
+          formData={formData}
+          onFormChange={handleFormChange}
+          onNext={handleNext}
+        />
+      )}
+      {step === 2 && <MyMap formData={formData} onPrev={handlePrev} />}
     </div>
   );
 };

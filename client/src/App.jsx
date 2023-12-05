@@ -6,6 +6,8 @@ import AppLayout from "./Components/AppLayout";
 import ProperyDetail from "./pages/ProperyDetail";
 import Profile from "./pages/Profile";
 import Search from "./pages/Search";
+import MyMap from "./Components/MyMap";
+import MapPage from "./pages/MapPage";
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
         <Route path="/feed" element={<Feed />} />
         <Route path="/property/:id" element={<ProperyDetail />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/search/:id" element={<Search />} />
+        <Route path="/map" element={<MapPage />} />
       </Route>
     </Routes>
   );

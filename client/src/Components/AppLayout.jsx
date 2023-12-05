@@ -14,7 +14,7 @@ const AppLayout = () => {
 
     if (!modal) {
       document.body.style.overflow = "hidden";
-      window.scrollTo({ top: 0, behavior: "auto" });
+      document.body.scrollTo({ top: 0, behavior: "auto" });
     } else {
       document.body.style.overflow = "auto";
     }
@@ -24,7 +24,7 @@ const AppLayout = () => {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, [modal]);
 
   return (
     <div className="w-full min-h-screen relative">
@@ -37,7 +37,7 @@ const AppLayout = () => {
             >
               <CgClose size={25} />
             </button>
-            <PropertyFormModal />
+            <PropertyFormModal onClose={toggleModal} />
           </div>
         </div>
       )}

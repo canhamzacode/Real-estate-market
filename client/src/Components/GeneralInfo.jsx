@@ -1,9 +1,14 @@
+import React from "react";
 import { CgMail, CgNametag, CgPlayList, CgSize } from "react-icons/cg";
 import { FaAudioDescription, FaBed, FaLocationArrow } from "react-icons/fa6";
 import Button from "./Button";
 import { IoPricetag } from "react-icons/io5";
 
-const Step1 = () => {
+const GeneralInfo = ({ formData, onFormChange, onNext }) => {
+  const handleChange = (field, e) => {
+    onFormChange(field, e.target.value);
+  };
+
   return (
     <div className="w-full justify-center p-4 max-w-[700px] mx-auto gap-[30px] flex flex-col text-black">
       <div className="w-full flex flex-col gap-4">
@@ -15,6 +20,7 @@ const Step1 = () => {
             <FaLocationArrow size={25} />
             <input
               type="text"
+              onChange={(e) => handleChange("location", e)}
               className="w-full border-none outline-none placeholder:text-black"
               placeholder="Location..."
             />
@@ -23,14 +29,18 @@ const Step1 = () => {
             <CgNametag size={25} />
             <input
               type="text"
+              value={formData.type}
+              onChange={(e) => handleChange("type", e)}
               className="w-full border-none outline-none placeholder:text-black"
-              placeholder="Type e.g: Appratment, Commercial"
+              placeholder="Type e.g: Apartment, Commercial"
             />
           </div>
           <div className="flex items-center gap-2 w-full bg-slate-50 p-2 rounded-md">
             <IoPricetag size={25} />
             <input
               type="text"
+              value={formData.price}
+              onChange={(e) => handleChange("price", e)}
               className="w-full border-none outline-none placeholder:text-black"
               placeholder="Price"
             />
@@ -39,30 +49,37 @@ const Step1 = () => {
             <CgSize size={25} />
             <input
               type="text"
+              value={formData.size}
+              onChange={(e) => handleChange("size", e)}
               className="w-full border-none outline-none placeholder:text-black"
-              placeholder="Size eg 5plot"
+              placeholder="Size e.g. 5 plots"
             />
           </div>
           <div className="flex items-center gap-2 w-full bg-slate-50 p-2 rounded-md">
             <FaBed size={25} />
             <input
               type="number"
+              value={formData.bedrooms}
+              onChange={(e) => handleChange("bedrooms", e)}
               className="w-full border-none outline-none placeholder:text-black"
-              placeholder="Number of Bed"
+              placeholder="Number of Bedrooms"
             />
           </div>
           <div className="flex items-center gap-2 w-full bg-slate-50 p-2 rounded-md">
             <CgPlayList size={25} />
             <input
               type="text"
+              value={formData.amenities}
+              onChange={(e) => handleChange("amenities", e)}
               className="w-full border-none outline-none placeholder:text-black"
-              placeholder="Ammenities e.g Play-ground"
+              placeholder="Amenities e.g. Play-ground"
             />
           </div>
           <div className="flex items-start gap-2 w-full bg-slate-50 p-2 rounded-md">
             <FaAudioDescription size={25} />
             <textarea
-              type="text"
+              value={formData.description}
+              onChange={(e) => handleChange("description", e)}
               className="w-full border-none outline-none placeholder:text-black"
               placeholder="Description"
             />
@@ -71,18 +88,20 @@ const Step1 = () => {
             <CgMail size={25} />
             <input
               type="email"
+              value={formData.contact}
+              onChange={(e) => handleChange("contact", e)}
               className="w-full border-none outline-none placeholder:text-black"
-              placeholder="email"
+              placeholder="Email"
             />
           </div>
         </div>
       </div>
       <div className="w-full flex gap-4 items-center justify-center mt-6">
-        <Button text="Next" />
-        <Button text="Prev" />
+        <Button text="Next" onClick={onNext} />
+        {/* You can add a "Prev" button if needed */}
       </div>
     </div>
   );
 };
 
-export default Step1;
+export default GeneralInfo;
