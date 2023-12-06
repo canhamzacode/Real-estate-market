@@ -4,7 +4,7 @@ import MyMap from "./MyMap";
 
 // eslint-disable-next-line react/prop-types
 const PropertyFormModal = ({ onClose }) => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     address: {
       long: "",
@@ -16,8 +16,7 @@ const PropertyFormModal = ({ onClose }) => {
     bedrooms: "",
     amenities: "",
     description: "",
-    contact: "",
-    location: "",
+    email: "",
     recordings: [],
     pictures: [],
   });
@@ -50,7 +49,13 @@ const PropertyFormModal = ({ onClose }) => {
           onNext={handleNext}
         />
       )}
-      {step === 2 && <MyMap formData={formData} onPrev={handlePrev} />}
+      {step === 2 && (
+        <MyMap
+          formData={formData}
+          onFormChange={handleFormChange}
+          onPrev={handlePrev}
+        />
+      )}
     </div>
   );
 };

@@ -1,6 +1,5 @@
-import React from "react";
 import { CgMail, CgNametag, CgPlayList, CgSize } from "react-icons/cg";
-import { FaAudioDescription, FaBed, FaLocationArrow } from "react-icons/fa6";
+import { FaAudioDescription, FaBed } from "react-icons/fa6";
 import Button from "./Button";
 import { IoPricetag } from "react-icons/io5";
 
@@ -16,15 +15,6 @@ const GeneralInfo = ({ formData, onFormChange, onNext }) => {
           Step 1: General Information
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex items-center gap-2 w-full bg-slate-50 p-2 rounded-md">
-            <FaLocationArrow size={25} />
-            <input
-              type="text"
-              onChange={(e) => handleChange("location", e)}
-              className="w-full border-none outline-none placeholder:text-black"
-              placeholder="Location..."
-            />
-          </div>
           <div className="flex items-center gap-2 w-full bg-slate-50 p-2 rounded-md">
             <CgNametag size={25} />
             <input
@@ -76,6 +66,16 @@ const GeneralInfo = ({ formData, onFormChange, onNext }) => {
             />
           </div>
           <div className="flex items-start gap-2 w-full bg-slate-50 p-2 rounded-md">
+            <CgMail size={25} />
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleChange("email", e)}
+              className="w-full border-none outline-none placeholder:text-black"
+              placeholder="Email"
+            />
+          </div>
+          <div className="flex items-start gap-2 w-full bg-slate-50 p-2 rounded-md">
             <FaAudioDescription size={25} />
             <textarea
               value={formData.description}
@@ -84,21 +84,10 @@ const GeneralInfo = ({ formData, onFormChange, onNext }) => {
               placeholder="Description"
             />
           </div>
-          <div className="flex items-start gap-2 w-full bg-slate-50 p-2 rounded-md">
-            <CgMail size={25} />
-            <input
-              type="email"
-              value={formData.contact}
-              onChange={(e) => handleChange("contact", e)}
-              className="w-full border-none outline-none placeholder:text-black"
-              placeholder="Email"
-            />
-          </div>
         </div>
       </div>
       <div className="w-full flex gap-4 items-center justify-center mt-6">
         <Button text="Next" onClick={onNext} />
-        {/* You can add a "Prev" button if needed */}
       </div>
     </div>
   );
