@@ -111,6 +111,11 @@ function MyMap({ onPrev, formData, onFormChange }) {
       long: viewport.longitude,
       lat: viewport.latitude,
     });
+    setLocationInfo(
+      `Location: ${viewport.latitude.toFixed(6)}, ${viewport.longitude.toFixed(
+        6
+      )}`
+    );
   }, [viewport]);
 
   useEffect(() => {
