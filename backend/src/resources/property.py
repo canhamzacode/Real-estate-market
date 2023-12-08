@@ -18,7 +18,7 @@ async def get_properties(q: Annotated[str, Query(description="this accept the se
                          , limit: Annotated[int | None, Query(description="This is the max number of items to be return. Max is 30", gt=0)] = 10):
     
     """
-    ## ma nigga stop playin
+    ## returns an array of properties with 
     
     """
     
@@ -39,7 +39,7 @@ async def get_feed(page: Annotated[int | None, Query(description="from the name 
                          , limit: Annotated[int | None, Query(description="This is the max number of items to be return. Max is 30", gt=0)] = 10):
     
     """
-    ## returns array or properties
+    ## returns a feed of properties based on an undecided algorithm
     
     """
     
