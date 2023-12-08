@@ -40,4 +40,4 @@ app = create_app(config)
 init_db(app)
 
 if __name__ == '__main__':
-    uvicorn.run("main:app", port=config.PORT, reload=True)
+    uvicorn.run("main:app", port=config.PORT)
