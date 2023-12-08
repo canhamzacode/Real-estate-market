@@ -1,16 +1,28 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from src.config.settings import Settings
 from src.config.db import init_db
 from src.routes import add_routers
 
 
+from fastapi.middleware.cors import CORSMiddleware
+
+
 def create_app(_config: Settings):
     _app = FastAPI()
 
+    _app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+
     @_app.get("/")
     def index():
-        return {"message": "FastAPI starter template, Use freely"}
+        return {"message": "hmm if you are seing this. the app is up and running"}
 
     add_routers(app=_app, config=_config)
     return _app
@@ -21,6 +33,8 @@ config = Settings.load_config()
 
 # Create app
 app = create_app(config)
+
+
 
 # Initialize database
 init_db(app)
