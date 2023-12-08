@@ -8,6 +8,22 @@ const GeneralInfo = ({ formData, onFormChange, onNext }) => {
     onFormChange(field, e.target.value);
   };
 
+  const nextStep = () => {
+    if (
+      !formData.type ||
+      !formData.price ||
+      !formData.size ||
+      !formData.bedrooms ||
+      !formData.amenities ||
+      !formData.email ||
+      !formData.description
+    ) {
+      console.log("All fields are required");
+      return;
+    }
+    onNext();
+  };
+
   return (
     <div className="w-full justify-center p-4 max-w-[700px] mx-auto gap-[30px] flex flex-col text-black">
       <div className="w-full flex flex-col gap-4">
@@ -87,7 +103,7 @@ const GeneralInfo = ({ formData, onFormChange, onNext }) => {
         </div>
       </div>
       <div className="w-full flex gap-4 items-center justify-center mt-6">
-        <Button text="Next" onClick={onNext} />
+        <Button text="Next" onClick={nextStep} />
       </div>
     </div>
   );

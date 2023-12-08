@@ -3,7 +3,7 @@ import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Button from "./Button";
 
-function MyMap({ onPrev, formData, onFormChange }) {
+function MyMap({ onPrev, formData, onFormChange, onNext }) {
   const [viewport, setViewport] = useState({
     latitude: 0,
     longitude: 0,
@@ -158,7 +158,7 @@ function MyMap({ onPrev, formData, onFormChange }) {
           />
         </Map>
       )}
-      <Button text="Next" />
+      <Button text="Next" onClick={onNext} />
       <Button text="Prev" onClick={onPrev} />
     </div>
   );

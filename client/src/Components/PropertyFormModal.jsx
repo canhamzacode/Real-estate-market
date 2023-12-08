@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import GeneralInfo from "./GeneralInfo";
 import MyMap from "./MyMap";
+import ImageUpload from "./ImageUpload";
 
-// eslint-disable-next-line react/prop-types
 const PropertyFormModal = ({ onClose }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const PropertyFormModal = ({ onClose }) => {
     amenities: "",
     description: "",
     email: "",
-    recordings: [],
+    // recordings: [],
     pictures: [],
   });
 
@@ -53,6 +53,14 @@ const PropertyFormModal = ({ onClose }) => {
         <MyMap
           formData={formData}
           onFormChange={handleFormChange}
+          onPrev={handlePrev}
+          onNext={handleNext}
+        />
+      )}
+      {step == 3 && (
+        <ImageUpload
+          setFormData={setFormData}
+          formData={formData}
           onPrev={handlePrev}
         />
       )}
