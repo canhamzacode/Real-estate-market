@@ -7,14 +7,14 @@ import Login from "../pages/Login";
 
 export const routes = [
   {
-    key: "feed",
+    key: "home",
     path: "/",
     element: <Feed />,
   },
   {
-    key: "login-page",
-    path: "/login",
-    element: <Login />,
+    key: "feed",
+    path: "/feed",
+    element: <Feed />,
   },
   {
     key: "about",

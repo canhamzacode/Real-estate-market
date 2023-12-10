@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const checkLoggedIn = async () => {
-      setIsLoading(true); // Set loading state to true
+      setIsLoading(true);
 
       const session = await supabase.auth.getSession();
       if (session?.data.session !== null) {

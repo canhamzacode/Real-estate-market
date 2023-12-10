@@ -2,7 +2,7 @@ import { Route, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthContext";
 
-const PrivateRoute = ({ children, ...rest }) => {
+const RequireAuth = ({ children, ...rest }) => {
   const { isLoggedIn, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -18,4 +18,4 @@ const PrivateRoute = ({ children, ...rest }) => {
   return <Route {...rest}>{children}</Route>;
 };
 
-export default PrivateRoute;
+export default RequireAuth;
