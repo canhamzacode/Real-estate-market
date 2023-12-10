@@ -9,14 +9,16 @@ const AuthContext = createContext({
   signUserOut: () => {},
 });
 
-// eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const checkLoggedIn = async () => {
+      setIsLoading(true); // Set loading state to true
+
       const session = await supabase.auth.getSession();
       if (session?.data.session !== null) {
         const user = session.data.session.user;
@@ -28,6 +30,8 @@ const AuthProvider = ({ children }) => {
         setIsLoggedIn(false);
         localStorage.removeItem("user");
       }
+
+      setIsLoading(false);
     };
 
     checkLoggedIn();
@@ -40,14 +44,13 @@ const AuthProvider = ({ children }) => {
     }
     setUser(null);
     setIsLoggedIn(false);
-    // Clear user data from local storage when signing out
     localStorage.removeItem("user");
     navigate("/login");
   };
 
   return (
     <AuthContext.Provider
-      value={{ user, isLoggedIn, setIsLoggedIn, signUserOut }}
+      value={{ user, isLoggedIn, setIsLoggedIn, signUserOut, isLoading }}
     >
       {children}
     </AuthContext.Provider>

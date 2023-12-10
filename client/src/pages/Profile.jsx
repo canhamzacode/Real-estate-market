@@ -4,7 +4,6 @@ import { FaPowerOff } from "react-icons/fa6";
 import { AuthContext } from "../AuthProvider/AuthContext";
 import { CgAdd } from "react-icons/cg";
 import SplitMail from "../utils/SplitMail";
-import MyMap from "../Components/MyMap";
 
 const Profile = () => {
   const { signUserOut, user } = useContext(AuthContext);
