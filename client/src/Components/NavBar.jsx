@@ -37,11 +37,15 @@ const NavBar = () => {
       </Link>
 
       <div className="hidden md:flex items-center gap-4">
-        <p className="text-sm font-bold">Explore</p>
-        <p className="text-sm font-bold">Community</p>
-        <p className="text-sm font-bold">Apartments</p>
-        <p className="text-sm font-bold">FAQ</p>
-        <p className="text-sm font-bold">About us</p>
+        <Link to="/feed" className="text-sm font-bold">
+          Explore
+        </Link>
+        <Link to="/feed#faq" className="text-sm font-bold">
+          FAQ
+        </Link>
+        <Link to="/about" className="text-sm font-bold">
+          About us
+        </Link>
       </div>
 
       <div className="flex items-center justify-center gap-6">
@@ -72,16 +76,10 @@ const NavBar = () => {
             <Link to="/" className="text-sm font-bold text-white">
               Home
             </Link>
-            <Link to="/explore" className="text-sm font-bold text-white">
+            <Link to="/feed" className="text-sm font-bold text-white">
               Explore
             </Link>
-            <Link to="/community" className="text-sm font-bold text-white">
-              Community
-            </Link>
-            <Link to="/apartments" className="text-sm font-bold text-white">
-              Apartments
-            </Link>
-            <Link to="/faq" className="text-sm font-bold text-white">
+            <Link to="/feed#faq" className="text-sm font-bold text-white">
               FAQ
             </Link>
             <Link to="/about" className="text-sm font-bold text-white">

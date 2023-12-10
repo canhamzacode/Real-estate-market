@@ -18,7 +18,7 @@ const GeneralInfo = ({ formData, onFormChange, onNext }) => {
       !formData.email ||
       !formData.description
     ) {
-      console.log("All fields are required");
+      alert("All fields are required");
       return;
     }
     onNext();
