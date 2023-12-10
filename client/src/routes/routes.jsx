@@ -3,7 +3,6 @@ import Feed from "../pages/Feed";
 import About from "../pages/About";
 import Search from "../pages/Search";
 import PropertyDetail from "../pages/ProperyDetail";
-import Login from "../pages/Login";
 
 export const routes = [
   {

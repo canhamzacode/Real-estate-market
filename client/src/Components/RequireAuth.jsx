@@ -1,8 +1,8 @@
-import { Route, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthContext";
 
-const RequireAuth = ({ children, ...rest }) => {
+const RequireAuth = ({ children }) => {
   const { isLoggedIn, isLoading } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -15,7 +15,7 @@ const RequireAuth = ({ children, ...rest }) => {
     }
   }
 
-  return <Route {...rest}>{children}</Route>;
+  return children;
 };
 
 export default RequireAuth;
