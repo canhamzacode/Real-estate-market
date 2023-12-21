@@ -2,29 +2,13 @@ import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
 import NavBar from "./NavBar";
 import { IoAdd } from "react-icons/io5";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import PropertyFormModal from "./PropertyFormModal";
 import { CgClose } from "react-icons/cg";
+import { ToggleContext } from "../ToggleProvider/ToggleContext";
 
 const AppLayout = () => {
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => {
-    setModal((prevModal) => !prevModal);
-
-    if (!modal) {
-      document.body.style.overflow = "hidden";
-      document.body.scrollTo({ top: 0, behavior: "auto" });
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [modal]);
+  const { toggleModal, modal } = useContext(ToggleContext);
 
   return (
     <div className="w-full min-h-screen relative">

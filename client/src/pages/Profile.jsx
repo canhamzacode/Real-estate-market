@@ -4,9 +4,12 @@ import { FaPowerOff } from "react-icons/fa6";
 import { AuthContext } from "../AuthProvider/AuthContext";
 import { CgAdd } from "react-icons/cg";
 import SplitMail from "../utils/SplitMail";
+import { ToggleContext } from "../ToggleProvider/ToggleContext";
 
 const Profile = () => {
   const { signUserOut, user } = useContext(AuthContext);
+  const { toggleModal } = useContext(ToggleContext);
+
   return (
     <div className="px-5 py-4 w-full">
       <div className="max-w-[800px] mx-auto bg-slate-200 rounded-md">
@@ -33,7 +36,10 @@ const Profile = () => {
               >
                 <FaPowerOff size={20} />
               </button>
-              <button className="text-base font-bold bg-black rounded-lg text-white p-2 flex gap-2 items-center">
+              <button
+                onClick={toggleModal}
+                className="text-base font-bold bg-black rounded-lg text-white p-2 flex gap-2 items-center"
+              >
                 <CgAdd size={20} /> Add Property
               </button>
             </div>

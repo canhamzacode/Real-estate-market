@@ -1,12 +1,23 @@
-import { FaHouse } from "react-icons/fa6";
 import Button from "../Components/Button";
 import aboutImg from "../assets/about.png";
 import FocusCard from "../Components/FocusCard";
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
-  const naviate = () => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const location = () => {
+    if (user) {
+      navigate("/profile");
+    } else {
+      navigate("/login");
+    }
     console.log("Navigate");
   };
+
   return (
     <div className="w-full">
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6 items-center px-5 py-3">
@@ -18,7 +29,7 @@ const About = () => {
               eiusmod tempor incididunt ut labore.
             </p>
           </div>
-          <Button text={"Get Started"} onClick={naviate} />
+          <Button text={user ? "Profile" : "Get Started"} onClick={location} />
         </div>
         <div className="w-full flex items-center">
           <img src={aboutImg} alt="" className="w-[80%]" />
